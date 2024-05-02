@@ -41,8 +41,13 @@ export default function TodoContextProvider({
     });
     setTodos(newTodoList);
   };
+  const resetTodos = () => {
+    setTodos([]);
+  };
   return (
-    <TodoContext.Provider value={{ todos, saveTodo, updateTodo, deleteTodo }}>
+    <TodoContext.Provider
+      value={{ todos, saveTodo, updateTodo, deleteTodo, resetTodos }}
+    >
       {children}
     </TodoContext.Provider>
   );

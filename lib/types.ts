@@ -9,4 +9,5 @@ export type TodoContextType = {
   saveTodo: (todoTitle: string) => void;
   updateTodo: (id: string, todoTitle: string) => void;
   deleteTodo: (id: string) => void;
+  resetTodos: () => void;
 };
