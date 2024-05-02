@@ -51,7 +51,7 @@ export default function TodoInput() {
               render={({ field }) => (
                 <FormItem className="w-full">
                   <FormControl>
-                    <Input placeholder="todo" {...field} />
+                    <Input placeholder="Todo" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

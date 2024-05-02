@@ -14,7 +14,7 @@ export default function TodoCard({ todo }: { todo: ITodo }) {
         </CardHeader>
         <CardFooter className="p-0 flex gap-1 flex-shrink-0">
           <UpdateTodoModal todoId={todo.id} todoTitle={todo.title} />
-          <DeleteTodoModal todoId={todo.id} />
+          <DeleteTodoModal todoId={todo.id} todoTitle={todo.title} />
         </CardFooter>
       </Card>
     </li>

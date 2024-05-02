@@ -23,6 +23,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { useTodoContext } from "@/contexts/todo-context";
 import { useState } from "react";
+import { toast } from "sonner";
 
 const FormSchema = z.object({
   todo: z
@@ -50,6 +51,7 @@ export default function UpdateTodoModal({
   });
   function onSubmit(data: z.infer<typeof FormSchema>) {
     updateTodo(todoId, data.todo);
+    toast.success("Todo updated");
     setOpen(false);
   }
   return (

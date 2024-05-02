@@ -12,9 +12,20 @@ import {
 import { Button } from "./ui/button";
 import { Trash2 } from "lucide-react";
 import { useTodoContext } from "@/contexts/todo-context";
+import { toast } from "sonner";
 
-export default function DeleteTodoModal({ todoId }: { todoId: string }) {
+export default function DeleteTodoModal({
+  todoId,
+  todoTitle,
+}: {
+  todoId: string;
+  todoTitle: string;
+}) {
   const { deleteTodo } = useTodoContext();
+  function handleDelete() {
+    deleteTodo(todoId);
+    toast.success("Todo deleted");
+  }
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
@@ -24,17 +35,15 @@ export default function DeleteTodoModal({ todoId }: { todoId: string }) {
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+          <AlertDialogTitle>Are you sure?</AlertDialogTitle>
           <AlertDialogDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
+            This action cannot be undone. This will delete todo:{" "}
+            <span className="font-bold">{todoTitle}</span>
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction onClick={() => deleteTodo(todoId)}>
-            Continue
-          </AlertDialogAction>
+          <AlertDialogAction onClick={handleDelete}>Continue</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
