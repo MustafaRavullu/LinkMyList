@@ -8,7 +8,7 @@ import { ITodo } from "@/lib/types";
 export default function TodoCard({ todo }: { todo: ITodo }) {
   return (
     <li>
-      <Card className="p-3 flex flex-row justify-between">
+      <Card className="p-3 flex flex-row items-center justify-between">
         <CardHeader className="p-0">
           <CardTitle className="text-sm">{todo.title}</CardTitle>
         </CardHeader>

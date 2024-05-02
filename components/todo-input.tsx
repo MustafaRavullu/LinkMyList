@@ -13,11 +13,15 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useTodoContext } from "@/contexts/todo-context";
+import MaxWidthWrapper from "./max-width-wrapper";
 
 const FormSchema = z.object({
-  todo: z.string().min(1, {
-    message: "Todo must be at least 1 character.",
-  }),
+  todo: z
+    .string()
+    .min(1, {
+      message: "Todo must be at least 1 character.",
+    })
+    .max(200, { message: "Todo exceeds the maximum limit of 200 characters." }),
 });
 
 export default function TodoInput() {
@@ -34,27 +38,29 @@ export default function TodoInput() {
     form.reset();
   }
   return (
-    <header>
-      <Form {...form}>
-        <form
-          onSubmit={form.handleSubmit(onSubmit)}
-          className="flex items-start justify-between"
-        >
-          <FormField
-            control={form.control}
-            name="todo"
-            render={({ field }) => (
-              <FormItem className="w-full">
-                <FormControl>
-                  <Input placeholder="todo" {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          <Button type="submit">Add</Button>
-        </form>
-      </Form>
-    </header>
+    <div className="sticky top-0 h-20 flex items-center z-50 backdrop-blur mb-4">
+      <MaxWidthWrapper className="max-w-screen-md">
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="flex items-start justify-between w-full gap-3"
+          >
+            <FormField
+              control={form.control}
+              name="todo"
+              render={({ field }) => (
+                <FormItem className="w-full">
+                  <FormControl>
+                    <Input placeholder="todo" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <Button type="submit">Add</Button>
+          </form>
+        </Form>
+      </MaxWidthWrapper>
+    </div>
   );
 }

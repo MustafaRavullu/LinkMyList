@@ -25,9 +25,12 @@ import { useTodoContext } from "@/contexts/todo-context";
 import { useState } from "react";
 
 const FormSchema = z.object({
-  todo: z.string().min(1, {
-    message: "Todo must be at least 1 character.",
-  }),
+  todo: z
+    .string()
+    .min(1, {
+      message: "Todo must be at least 1 character.",
+    })
+    .max(200, { message: "Todo exceeds the maximum limit of 200 characters." }),
 });
 
 export default function UpdateTodoModal({
@@ -61,7 +64,10 @@ export default function UpdateTodoModal({
           <DialogTitle>Edit Todo</DialogTitle>
         </DialogHeader>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="">
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="flex flex-col gap-3"
+          >
             <FormField
               control={form.control}
               name="todo"

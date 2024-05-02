@@ -19,6 +19,10 @@ export default function TodoContextProvider({
       isCompleted: false,
     };
     setTodos([...todos, newTodo]);
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: "smooth",
+    });
   };
 
   const updateTodo = (id: string, todoTitle: string) => {

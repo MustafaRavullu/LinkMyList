@@ -6,7 +6,7 @@ import TodoCard from "./todo-card";
 export default function TodoList() {
   const { todos } = useTodoContext();
   return (
-    <ul>
+    <ul className="sm:mb-20 mb-32 flex flex-col gap-3">
       {todos.map((todo) => (
         <TodoCard todo={todo} key={todo.id}></TodoCard>
       ))}
