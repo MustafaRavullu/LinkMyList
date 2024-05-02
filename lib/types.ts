@@ -1,7 +1,6 @@
 export type ITodo = {
   id: string;
   title: string;
-  isCompleted: boolean;
 };
 
 export type TodoContextType = {

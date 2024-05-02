@@ -16,7 +16,6 @@ export default function TodoContextProvider({
     const newTodo: ITodo = {
       id: nanoid(),
       title: todoTitle,
-      isCompleted: false,
     };
     setTodos([...todos, newTodo]);
     window.scrollTo({
