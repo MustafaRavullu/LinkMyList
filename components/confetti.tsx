@@ -8,8 +8,8 @@ export default function Confetti() {
   return (
     <div>
       <ReactConfetti
-        width={width}
-        height={height}
+        width={width - 20}
+        height={height - 10}
         tweenDuration={1000}
         recycle={false}
       />
