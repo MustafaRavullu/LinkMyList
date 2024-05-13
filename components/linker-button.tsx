@@ -16,7 +16,6 @@ import { nanoid } from "nanoid";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "@/firebase.config";
 import { Loader2 } from "lucide-react";
-import { Skeleton } from "@/components/ui/skeleton";
 import { toast } from "sonner";
 
 export default function LinkerButton() {
@@ -70,13 +69,6 @@ export default function LinkerButton() {
               "Copy"
             )}
           </AlertDialogAction>
-          {loading ? (
-            <Skeleton className="w-full h-[50px] mb-3" />
-          ) : (
-            <div className="w-full border p-3 rounded-md text-center mb-3">
-              {linkId}
-            </div>
-          )}
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
